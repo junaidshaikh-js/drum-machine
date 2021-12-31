@@ -60,6 +60,32 @@ body {
   margin: 1rem;
 }
 
+.toggle-container {
+  margin-top: 1rem;
+}
+
+.slider-container {
+  position: relative;
+  width: 80px;
+  height: 30px;
+  background-color: black;
+}
+
+.slider {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 5%;
+  height: 90%;
+  width: 48%;
+  transition: all 200ms;
+  background-color: blue;
+}
+
+/* .slider:hover::before {
+  transform: translateX(36px);
+} */
+
 @media only screen and (min-width: 500px) {
   #drum-machine {
     grid-template-columns: 1.2fr 0.8fr;
