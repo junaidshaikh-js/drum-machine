@@ -122,28 +122,55 @@ function DrumMachine() {
   const [currentBank, setCurrentBank] = useState(bankOne);
   const [currentBankId, setCurrentBankId] = useState("Heater Kit");
   const [display, setDisplay] = useState("");
+  const [volume, setVolume] = useState(0.3);
+
+  const clearDisplay = () => {
+    setTimeout(() => {
+      setDisplay("");
+    }, 1000);
+  };
 
   const handlePower = () => {
     setPower(!power);
+
+    if (power) {
+      setDisplay("Power is OFF");
+    } else {
+      setDisplay("Power is ON");
+    }
+
+    clearDisplay();
     // console.log(power);
   };
 
   const handleBank = () => {
     if (power) {
+      // eslint-disable-next-line eqeqeq
       if (currentBankId == "Heater Kit") {
         setCurrentBank(bankTwo);
         setCurrentBankId("Smooth Piano Kit");
+        setDisplay("Smooth Piano Kit");
       } else {
         setCurrentBank(bankOne);
         setCurrentBankId("Heater Kit");
+        setDisplay("Heater Kit");
       }
-      console.log(currentBankId);
+
+      clearDisplay();
+      // console.log(currentBankId);
     }
+  };
+
+  const handleVolume = (e) => {
+    setVolume(e.target.value);
+    console.log(volume * 100);
+    setDisplay(`Volume: ${volume * 100}`);
   };
 
   const powerSlider = power ? { transform: "translateX(36px)" } : {};
 
   const bankSlider =
+    // eslint-disable-next-line eqeqeq
     currentBankId == "Smooth Piano Kit"
       ? { transform: "translateX(36px)" }
       : {};
@@ -156,6 +183,9 @@ function DrumMachine() {
         handleBank={handleBank}
         powerSlider={powerSlider}
         bankSlider={bankSlider}
+        displayText={display}
+        volume={volume}
+        handleVolume={handleVolume}
       />
     </section>
   );
