@@ -62,9 +62,11 @@ body {
 
 .toggle-container {
   margin-top: 1rem;
+  text-align: center;
 }
 
 .slider-container {
+  margin-top: 0.5rem;
   position: relative;
   width: 80px;
   height: 30px;
@@ -75,8 +77,8 @@ body {
   content: "";
   position: absolute;
   left: 2px;
-  top: 5%;
-  height: 90%;
+  top: 10%;
+  height: 80%;
   width: 48%;
   transition: all 200ms;
   background-color: blue;
